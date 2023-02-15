@@ -41,5 +41,6 @@ const fs = require('fs');
       }
 
 exports.Passageiro=Passageiro;
+exports.Passageiros=Passageiros;
 
 
