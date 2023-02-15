@@ -40,7 +40,7 @@ const fs = require('fs');
         return promessa;
       }
 
-exports.lerPassageiro = (nomeArquivo) => {
+exports.lerArquivo = (nomeArquivo) => {
   const promessa = new Promise((resolve, reject) => {
     fs.readFile(nomeArquivo, 'utf-8', (erro, texto) => {
     if (erro) {
@@ -52,6 +52,18 @@ exports.lerPassageiro = (nomeArquivo) => {
   });
   return promessa;
 }
+exports.excluirPassageiro = (nomeArquivo) => {
+  const promessa = new Promise((reject) => {
+    fs.unlink(nomeArquivo, (erro) => {
+      if (erro) {
+        reject(erro);
+      } else {
+        console.log("Arquivo deletado!");
+      }
+    });
+  });
+  return promessa;
+};
 
 exports.Passageiro=Passageiro;
 exports.Passageiros=Passageiros;

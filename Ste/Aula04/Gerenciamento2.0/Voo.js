@@ -45,5 +45,16 @@ exports.lerVoo = (nomeArquivo) => {
   });
   return promessa;
 }
-
+exports.excluirVoo = (nomeArquivo) => {
+  const promessa = new Promise((reject) => {
+    fs.unlink(nomeArquivo, (erro) => {
+      if (erro) {
+        reject(erro);
+      } else {
+        console.log("Arquivo deletado!");
+      }
+    });
+  });
+  return promessa;
+};
 exports.Voo=Voo
