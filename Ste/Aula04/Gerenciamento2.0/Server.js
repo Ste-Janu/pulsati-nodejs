@@ -9,8 +9,11 @@ const salvarPassageiro = require('./Passageiros').salvarPassageiro;
 const salvarAeroporto = require('./Aeroporto').salvarAeroporto;
 const salvarVoo = require('./Voo').salvarVoo;
 
+const lerPassageiro = require('./Passageiros').lerPassageiro;
+const lerAeroporto = require('./Aeroporto').lerAeroporto;
+const lerVoo = require('./Voo').lerVoo;
 
-
+//criar arquivo passageiro
 http.createServer((req, res) => {
   if (req.method == 'POST') {
     if (req.url.indexOf('/passageiros') >= 0) {
@@ -32,11 +35,19 @@ http.createServer((req, res) => {
     } else {
       res.end('Not found');
     }
+
+    //ler arquivo passageiro
+  } else if(req.method == 'GET'){
+    lerPassageiro('Adriano.json').then((texto) => {
+    res.end(texto);
+    })
+    
   } else {
     res.end('Not found');
   }
 }).listen(8000, () => console.log('Servidor inicializado na porta 8000'));
 
+//criar arquivo aeroporto
 http.createServer((req, res) => {
   if (req.method == 'POST') {
     if (req.url.indexOf('/aeroporto') >= 0) {
@@ -55,14 +66,19 @@ http.createServer((req, res) => {
         })
         res.end(aeroportoJson);
       });
-    } else {
-      res.end('Not found');
+    } else{
+      res.end(texto);
     }
+  } else if (req.method == 'GET') {
+    lerAeroporto('nvt.json').then((texto) => {
+      res.end(texto);
+      })
   } else {
     res.end('Not found');
   }
 }).listen(8001, () => console.log('Servidor inicializado na porta 8001'));
 
+//criar arquivo voo
 http.createServer((req, res) => {
   if (req.method == 'POST') {
     if (req.url.indexOf('/voos') >= 0) {
@@ -81,9 +97,13 @@ http.createServer((req, res) => {
         })
         res.end(voosJson);
       });
-    } else {
-      res.end('Not found');
+    }  else{
+      res.end(texto);
     }
+  } else if (req.method == 'GET') {
+    lerVoo('GOL.json').then((texto) => {
+      res.end(texto);
+      })
   } else {
     res.end('Not found');
   }

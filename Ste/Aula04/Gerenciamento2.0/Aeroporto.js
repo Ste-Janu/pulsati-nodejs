@@ -31,4 +31,16 @@ const fs = require('fs');
         });
         return promessa;
       }
+exports.lerAeroporto = (nomeArquivo) => {
+  const promessa = new Promise((resolve, reject) => {
+    fs.readFile(nomeArquivo, 'utf-8', (erro, texto) => {
+     if (erro) {
+      reject(erro);
+      } else {
+      resolve(texto);
+      }
+    })
+  });
+  return promessa;
+}
 exports.Aeroporto=Aeroporto;
