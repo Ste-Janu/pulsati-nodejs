@@ -47,10 +47,11 @@ app.put('/aeroporto/:codigo', async (req, res) => {
   const codigo = req.params.codigo;
   const aeroporto = await Aeroporto.findByPk(codigo);
   const { nome } = req.body;
-  aeroporto.nome = nome;
+  aeroporto.nome = nome;0
   await aeroporto.save();
   res.json(aeroporto);
 });
+
 app.delete('/aeroporto/:codigo', async (req, res) => {
   const codigo = req.params.codigo;
   const aeroporto = await Aeroporto.findByPk(codigo);
