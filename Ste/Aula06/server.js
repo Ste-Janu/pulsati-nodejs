@@ -31,6 +31,7 @@ sequelize.sync();
 const express = require('express');
 const app = express();
 app.use(express.json());
+
 app.post('/aeroporto', async (req, res) => {
   const { nome} = req.body;
   const aeroporto = new Aeroporto();
@@ -47,7 +48,7 @@ app.put('/aeroporto/:codigo', async (req, res) => {
   const codigo = req.params.codigo;
   const aeroporto = await Aeroporto.findByPk(codigo);
   const { nome } = req.body;
-  aeroporto.nome = nome;0
+  aeroporto.nome = nome;
   await aeroporto.save();
   res.json(aeroporto);
 });
@@ -60,8 +61,8 @@ app.delete('/aeroporto/:codigo', async (req, res) => {
 })
 
 app.get('/aeroporto', (req, res) => {
-Aeroporto.findAll().then((rerult)=> {
-  res.json(rerult);
+Aeroporto.findAll().then((result)=> {
+  res.json(result);
 })
 
 })

@@ -11,11 +11,6 @@ const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
 });
-
-
-
-
-
 class Menu {
     exebirMenu(){
         readline.question("O que você deseja fazer? (1)Adicionar Passageiros (2)Adicionar Voo (3) Adicionar Aeroporto ", 
